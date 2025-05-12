@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const ejs = require("ejs");
 const fileUpload = require("express-fileupload");
 const { v4: uuidv4 } = require("uuid");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 // Initialize Express App
 const app = express();
@@ -21,8 +21,8 @@ app.use(fileUpload());
 // Database Connection
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root_2",
-  password: "1@HelloMoto",
+  user: "root",
+  password: "kapoor",
   database: "foodorderingwesitedb",
 });
 connection.connect();
