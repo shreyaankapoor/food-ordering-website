@@ -7,7 +7,6 @@ const fileUpload = require("express-fileupload");
 const { v4: uuidv4 } = require("uuid");
 const mysql = require("mysql2");
 require("dotenv").config();
-const mysql = require("mysql2");
 
 // Initialize Express App
 const app = express();
