@@ -9,7 +9,6 @@ RUN npm install --ignore-scripts
 
 COPY app.js ./
 COPY package*.json ./
-COPY src/ ./src/
 COPY public/ ./public/
 
 RUN chown -R appuser:appgroup /app
