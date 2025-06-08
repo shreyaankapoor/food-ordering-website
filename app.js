@@ -6,6 +6,8 @@ const ejs = require("ejs");
 const fileUpload = require("express-fileupload");
 const { v4: uuidv4 } = require("uuid");
 const mysql = require("mysql2");
+require("dotenv").config();
+const mysql = require("mysql2");
 
 // Initialize Express App
 const app = express();
@@ -20,12 +22,19 @@ app.use(fileUpload());
 
 // Database Connection
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "kapoor",
-  database: "foodorderingwesitedb",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "kapoor",
+  database: process.env.DB_NAME || "foodorderingwesitedb",
 });
-connection.connect();
+
+connection.connect((err) => {
+  if (err) {
+    console.error("Database connection failed:", err.stack);
+    return;
+  }
+  console.log("Connected to MySQL database");
+});
 
 /*****************************  User-End Portal ***************************/
 
