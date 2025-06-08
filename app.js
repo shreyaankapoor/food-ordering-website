@@ -21,19 +21,12 @@ app.use(fileUpload());
 
 // Database Connection
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "kapoor",
-  database: process.env.DB_NAME || "foodorderingwesitedb",
+  host: "localhost",
+  user: "root",
+  password: "kapoor",
+  database: "foodorderingwesitedb",
 });
-
-connection.connect((err) => {
-  if (err) {
-    console.error("Database connection failed:", err.stack);
-    return;
-  }
-  console.log("Connected to MySQL database");
-});
+connection.connect();
 
 /*****************************  User-End Portal ***************************/
 
