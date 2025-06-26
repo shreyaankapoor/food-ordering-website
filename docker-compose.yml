@@ -1,28 +1,24 @@
-version: "3.8"
+version: '3.8'
 
 services:
   app:
     build: .
-    container_name: food-order-app
     ports:
       - "3000:3000"
-    env_file:
-      - .env
     depends_on:
-      - mysql
-    restart: always
+      - db
+    environment:
+      - DB_HOST=db             # ✅ container name, not localhost
+      - DB_PORT=3306           # ✅ add this
+      - DB_USER=root
+      - DB_PASSWORD=kapoor
+      - DB_NAME=foodorderingwesitedb
 
-  mysql:
+  db:
     image: mysql:5.7
-    container_name: mysql-db
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: kapoor
       MYSQL_DATABASE: foodorderingwesitedb
     ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    restart: always
-
-volumes:
-  mysql_data:
+      - "3307:3306"            # ✅ exposes host 3307, internal stays 3306

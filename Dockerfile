@@ -13,9 +13,13 @@ COPY views/ ./views/
 COPY bin/ ./bin/
 COPY app.js ./
 
+COPY wait-for-db.sh ./     
+RUN chmod +x wait-for-db.sh # <- Make it executable
+
 RUN chown -R appuser:appgroup /app
 USER appuser
 
 EXPOSE 3000
 
+ENTRYPOINT ["./wait-for-db.sh"]
 CMD ["npm", "start"]
