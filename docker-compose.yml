@@ -20,5 +20,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: kapoor
       MYSQL_DATABASE: foodorderingwesitedb
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - "3308:3306"            # ✅ exposes host 3307, internal stays 3306
+      - "3308:3306"            
