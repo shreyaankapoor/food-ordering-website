@@ -1,8 +1,9 @@
 #!/bin/sh
+# wait-for-db.sh
 
 echo "⏳ Waiting for MySQL at $DB_HOST:$DB_PORT..."
 
-while ! nc -z "$DB_HOST" "$DB_PORT"; do
+until nc -z "$DB_HOST" "${DB_PORT:-3306}"; do
   sleep 1
 done
 

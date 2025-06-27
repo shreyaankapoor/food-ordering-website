@@ -14,7 +14,7 @@ COPY bin/ ./bin/
 COPY app.js ./
 
 COPY wait-for-db.sh ./     
-RUN chmod +x wait-for-db.sh # <- Make it executable
+RUN chmod +x wait-for-db.sh 
 
 RUN chown -R appuser:appgroup /app
 USER appuser
