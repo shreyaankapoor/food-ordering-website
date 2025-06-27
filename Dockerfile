@@ -2,6 +2,7 @@ FROM node:14-alpine3.12
 
 WORKDIR /app
 
+RUN apk add --no-cache netcat-openbsd
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 COPY package*.json ./
@@ -21,5 +22,5 @@ USER appuser
 
 EXPOSE 3000
 
-ENTRYPOINT ["./wait-for-db.sh"]
+ENTRYPOINT ["/app/wait-for-db.sh"]
 CMD ["npm", "start"]
